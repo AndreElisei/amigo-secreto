@@ -7,27 +7,33 @@ function adicionar(){
         let listaNomes = document.getElementById("lista-amigos")
         listaNomes.textContent = listaAmigos.join(", ")
     } else {
-        alert ('Digite o nome do amigo, amigo')
+        alert ('Digite o nome do amigo, amigo');
+        return;
     }
 console.log(listaAmigos)
 document.getElementById('nome-amigo').value = ""
 }
 
 function sortear(){
-    embaralha(listaAmigos)
-    let sorteio = document.getElementById('lista-sorteio')
+    if (listaAmigos.length>=3){
+        embaralha(listaAmigos)
+        let sorteio = document.getElementById('lista-sorteio')
 
-    for(i = 0; i < listaAmigos.length; i++){
-        if (i == listaAmigos.length - 1){
-            let amigo1 = listaAmigos[listaAmigos.length - 1]
-            let amigo2 = listaAmigos[0]
+        for(i = 0; i < listaAmigos.length; i++){
+            if (i == listaAmigos.length - 1){
+                let amigo1 = listaAmigos[listaAmigos.length - 1]
+                let amigo2 = listaAmigos[0]
+                sorteio.innerHTML = sorteio.innerHTML + amigo1 + ' --> ' + amigo2 + '<br>'
+            } else { 
+            let amigo1 = listaAmigos[i];
+            let amigo2 = listaAmigos[i+1]
             sorteio.innerHTML = sorteio.innerHTML + amigo1 + ' --> ' + amigo2 + '<br>'
-        } else {
-        let amigo1 = listaAmigos[i];
-        let amigo2 = listaAmigos[i+1]
-        sorteio.innerHTML = sorteio.innerHTML + amigo1 + ' --> ' + amigo2 + '<br>'
-    }   
-}
+            }
+        }   
+    } else {
+            alert('Você precisa de mais amigos, amigo')
+            return;
+    }
 }
 
 function embaralha(lista) {
