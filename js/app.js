@@ -3,9 +3,14 @@ let listaAmigos = []
 function adicionar(){
     let nome = document.getElementById('nome-amigo').value
     if (nome != ""){
-        listaAmigos.push(nome)
-        let listaNomes = document.getElementById("lista-amigos")
-        listaNomes.textContent = listaAmigos.join(", ")
+        if(listaAmigos.includes(nome)){
+            alert('Esse nome já consta na lista, insira seu sobrenome para podermos diferenciar')
+            return;
+        } else {
+            listaAmigos.push(nome)
+            let listaNomes = document.getElementById("lista-amigos")
+            listaNomes.textContent = listaAmigos.join(", ")
+        }
     } else {
         alert ('Digite o nome do amigo, amigo');
         return;
